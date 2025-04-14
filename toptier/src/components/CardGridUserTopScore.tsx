@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { ScoreCard } from './ScoreCard';
 import fortnitepic from '@/assets/fortnite.png';
+import warzonepic from '@/assets/warzone.png';
+import wordlepic from '@/assets/wordle.png';
 import Link from 'next/link';
 
 export interface Score {
@@ -29,13 +31,13 @@ function CardGridContentList({
       id: 2,
       title: '38 Warzone',
       description: '22 wins',
-      imageUrl: fortnitepic.src,
+      imageUrl: warzonepic.src,
     },
     {
       id: 3,
       title: 'Wordle',
       description: '13 wins',
-      imageUrl: fortnitepic.src,
+      imageUrl: wordlepic.src,
     },
   ],
 }: CardGridContentListProps) {
