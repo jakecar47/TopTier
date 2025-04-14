@@ -29,7 +29,7 @@ function CardGridContentList({
     },
     {
       id: 2,
-      title: '38 Warzone',
+      title: 'Warzone',
       description: '22 wins',
       imageUrl: warzonepic.src,
     },
