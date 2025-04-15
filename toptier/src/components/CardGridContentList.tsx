@@ -13,7 +13,7 @@ export interface Score {
   imageUrl: string;
 }
 
-interface CardGridContentListProps {
+export interface CardGridContentListProps {
   scores?: Score[];
   headerTitle?: string;
   headerDescription?: string;
@@ -55,13 +55,14 @@ function CardGridContentList({
           </p>
         </header>
 
-        <div className="">
+        {/* previous add-item area */}
+        {/* <div className="">
           <Link href="/add-item">
             <button className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
               Add Item
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">

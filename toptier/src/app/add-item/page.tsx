@@ -44,7 +44,7 @@ export default function ItemAddForm() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-[#0C0F11] text-black">
         <div className="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-center mb-6">Create a New Item</h2>
+          <h2 className="text-2xl font-bold text-center mb-6">Add a New Highscore</h2>
           <Card>
             <form onSubmit={handleSubmit} className="space-y-6">
               <input
@@ -76,7 +76,7 @@ export default function ItemAddForm() {
                   type="submit"
                   className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300"
                 >
-                  Add Item
+                  Add Highscore
                 </button>
               </div>
             </form>

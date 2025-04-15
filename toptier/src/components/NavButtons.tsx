@@ -35,6 +35,12 @@ function NavButtons(props: NavButtonsProps) {
               Logout
             </button>
           </Link>
+          <Link href="/user-account">
+            <button 
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
+              Account
+            </button>
+          </Link>
         </div>
       )}
     </div>
