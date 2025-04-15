@@ -7,7 +7,7 @@ import Navbar from "@/components/Navbar";
 function HomePage() {
 
   // dynamically store a variable representing whether or not the user is logged in
-  let [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  let [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
 
   // function to update the logged in status variable
   function handleLogin() {

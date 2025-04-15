@@ -12,18 +12,24 @@ function NavButtons(props: NavButtonsProps) {
       {/* if user is NOT logged in */}
       {!props.isLoggedIn && (
         <div className="flex gap-3 items-center max-md:gap-2 max-sm:ml-auto">
-          <button className="p-2 text-base rounded-md bg-[#D4AF37] bg-opacity-0 border-black border-opacity-10 min-w-20 text-stone-900 hover:bg-gray-50">
-            Sign in
-          </button>
-          <button className="p-2 text-base rounded-md bg-[#D4AF37] min-w-20 text-black hover:bg-stone-800">
-            Register
-          </button>
+          <Link href="/login">
+            <button 
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
+              Login
+            </button>
+          </Link>
+          <Link href="/sign-up">
+            <button 
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
+              Sign Up
+            </button>
+          </Link>
         </div>
       )}
       {/* if user IS logged in */}
       {props.isLoggedIn && (
         <div className="flex gap-3 items-center max-md:gap-2 max-sm:ml-auto">
-          <Link href="/">
+          <Link href="/welcome">
             <button 
               className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
               Logout

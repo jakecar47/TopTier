@@ -25,10 +25,10 @@ export default function Welcome() {
         Your very own game ranking platform! See where you land on the leaderboard!
       </p>
       <p className="text-lg md:text-xl text-center max-w-2xl mb-8">
-        Register or sign in to compare you rank with your friends, classmates, and others around the world!
+        Log in or sign up to compare you rank with your friends, classmates, and others around the world!
       </p>
 
-      {/* Call to Action */}
+      {/* Call to Action
       <div className="flex">
         <Link href="/auth-view">
           <button 
@@ -36,7 +36,7 @@ export default function Welcome() {
             Sign In as Guest
           </button>
         </Link>
-      </div>
+      </div> */}
   
       {/* Explanation text */}
       <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">
