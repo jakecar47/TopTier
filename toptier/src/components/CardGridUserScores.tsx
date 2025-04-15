@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { Score } from "@/components/CardGridContentList";
 import { CardGridContentListProps } from "@/components/CardGridContentList";
 
-function CardGridUserTopScore({
+function CardGridUserScores({
   scores = [
     {
       id: 1,
@@ -47,7 +47,7 @@ function CardGridUserTopScore({
               Add New Score
             </button>
           </Link>
-          <Link href="/">
+          <Link href="/auth-view">
             <button className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
               Back to Home
             </button>
@@ -70,4 +70,4 @@ function CardGridUserTopScore({
   );
 }
 
-export default CardGridUserTopScore;
+export default CardGridUserScores;
