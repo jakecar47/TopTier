@@ -3,7 +3,7 @@
 import React from "react";
 import Logo from "./Logo";
 import SearchField from "./SearchField";
-import AuthButtons from "./AuthButtons";
+import NavButtons from "./NavButtons";
 
 interface NavbarProps {
   isLoggedIn: boolean;
@@ -24,7 +24,7 @@ function Navbar(props: NavbarProps) {
         )}
 
         <div className="flex-none">
-          <AuthButtons />
+          <NavButtons isLoggedIn={props.isLoggedIn}/>
         </div>
       </div>
     </nav>

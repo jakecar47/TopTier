@@ -1,9 +1,11 @@
 "use client";
-import * as React from "react";
+
+import React from "react";
 import { ScoreCard } from "./ScoreCard";
 import fortnitepic from "@/assets/fortnite.png";
 import Link from "next/link";
 
+// a 'score' data type to store data for the highscores
 export interface Score {
   id: number;
   title: string;

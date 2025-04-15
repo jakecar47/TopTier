@@ -2,6 +2,7 @@
 import * as React from "react";
 import { MenuItem } from "./MenuItem";
 
+// the type to hold the data for the side menu
 export interface MenuItemData {
   id: string;
   icon: string;
@@ -12,6 +13,7 @@ interface MenuProps {
   items: MenuItemData[];
 }
 
+// the side menu containing the user populated games
 function Menu({ items }: MenuProps) {
   return (
     <nav className="border-solid border-[color:var(--sds-color-border-default-default)] border-[length:var(--sds-size-stroke-border)] rounded-[var(--sds-size-radius-200)] shadow-[var(--sds-size-depth-0)_var(--sds-size-depth-100)_var(--sds-size-depth-100)_var(--sds-size-depth-negative-025)_var(--sds-color-black-100)] bg-[color:var(--sds-color-background-default-default)] mx-auto max-w-[320px] w-full px-2 pt-2 pb-[712px] overflow-hidden">
