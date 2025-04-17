@@ -42,27 +42,18 @@ function CardGridContentList({
   ],
 }: CardGridContentListProps) {
   return (
-    <section className="p-16 bg-white max-md:px-5">
+    <section className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
 
       {/* Header section */}
       <div className="flex px-10 space-in-between"> 
         <header className="max-w-full leading-tight w-[239px]">
-          <h1 className="text-2xl font-semibold tracking-tight text-stone-900">
+          <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
             Fortnite
           </h1>
-          <p className="mt-2 text-xl text-neutral-500">
+          <p className="mt-2 text-xl text-[#D4AF37]">
             All-time Fortnite wins
           </p>
         </header>
-
-        {/* previous add-item area */}
-        {/* <div className="">
-          <Link href="/add-item">
-            <button className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
-              Add Item
-            </button>
-          </Link>
-        </div> */}
       </div>
 
       <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
