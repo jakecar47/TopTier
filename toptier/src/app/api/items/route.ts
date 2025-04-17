@@ -1,5 +1,5 @@
 import connectMongoDB from "../../../../config/mongodb";
-import Item from "../../../models/itemSchema";
+import Item from "@/models/itemSchema";
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 
@@ -10,9 +10,9 @@ export async function GET() {
     return NextResponse.json({ items });
 }
 
-// POST function to create and add a new item to the database
+// POST function to create and add a new item to the items database (scores)
 export async function POST(request: NextRequest) {
-    const { owner, title, description, url } = await request.json();
+    const { userIdentification, game, winCount } = await request.json();
     await connectMongoDB();
     await Item.create({ userIdentification, game, winCount });
     return NextResponse.json({ message: "Item added successfully" }, { status: 201 });
