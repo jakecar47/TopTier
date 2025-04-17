@@ -26,10 +26,10 @@ export default function Content() {
     return (
         <div>
             <div className="flex">
-                <aside className="w-[320px] p-4 bg-white">
+                <aside className="w-[320px] p-6 border-r-2 border-[#D4AF37]">
                     <Menu items={sampleItems} />
                 </aside>
-                <main className="flex-1 p-8">
+                <main className="flex-1 p-6">
                     <CardGridContentList />
                 </main>
             </div>

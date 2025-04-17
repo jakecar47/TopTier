@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex">
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-6">
           <CardGridUserScores />
         </main>
       </div>

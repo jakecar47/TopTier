@@ -22,7 +22,7 @@ function SearchField() {
       </div>
       <input
         type="search"
-        className="w-full py-2 pl-10 pr-4 text-black bg-[#D4AF37] rounded-md  focus:outline-none"
+        className="w-full py-2 pl-10 pr-4 text-black bg-[#D4AF37] rounded-md focus:outline-none font-bold"
         placeholder="Search games..."
       />
     </div>

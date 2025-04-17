@@ -12,34 +12,34 @@ function CardGridUserScores({
   scores = [
     {
       id: 1,
-      title: 'Fortnite',
-      description: '34 Wins',
-      imageUrl: fortnitepic.src,
-    },
-    {
-      id: 2,
-      title: 'Warzone',
-      description: '22 wins',
+      title: "3 wins",
+      description: "James Casey, 4th Year Computer Science",
       imageUrl: warzonepic.src,
     },
     {
+      id: 2,
+      title: "34 wins",
+      description: "James Casey, 4th Year Computer Science",
+      imageUrl: fortnitepic.src,
+    },
+    {
       id: 3,
-      title: 'Wordle',
-      description: '13 wins',
+      title: "16 wins",
+      description: "James Casey, 4th Year Computer Science",
       imageUrl: wordlepic.src,
     },
   ],
 }: CardGridContentListProps) {
   return (
-    <div className="p-16 bg-white max-md:px-5">
+    <div className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
 
       {/* header section */}
       <div className="flex px-10 space-in-between">
         <header className="max-w-full leading-tight w-[239px]">
-          <h1 className="text-2xl font-semibold tracking-tight text-stone-900">
+          <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
             James Casey
           </h1>
-          <p className="mt-2 text-xl text-neutral-500">Your Top Scores!</p>
+          <p className="mt-2 text-xl text-[#D4AF37]">Your Top Scores!</p>
         </header>
         <div className="">
           <Link href="/add-item"className="mr-10">
