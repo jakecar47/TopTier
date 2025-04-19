@@ -15,40 +15,36 @@ interface JWTPayload {
   exp: number;
 }
 
-function CardGridUserScores({
-  scores = [
-    {
-      id: 1,
-      title: "3 wins",
-      description: "James Casey, 4th Year Computer Science",
-      imageUrl: warzonepic.src,
-    },
-    {
-      id: 2,
-      title: "34 wins",
-      description: "James Casey, 4th Year Computer Science",
-      imageUrl: fortnitepic.src,
-    },
-    {
-      id: 3,
-      title: "16 wins",
-      description: "James Casey, 4th Year Computer Science",
-      imageUrl: wordlepic.src,
-    },
-  ],
-}: CardGridContentListProps) {
+interface ScoreItem {
+  _id: string;
+  game: string;
+  winCount: string;
+  userIdentification: string;
+}
+
+function CardGridUserScores() {
   const [userName, setUserName] = useState("");
+  const [scores, setScores] = useState<ScoreItem[]>([]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decoded = jwtDecode<JWTPayload>(token);
-        setUserName(decoded.username);
-      } catch (error) {
-        console.error("Failed to decode JWT:", error);
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const decoded = jwtDecode<JWTPayload>(token);
+          setUserName(decoded.username);
+
+          // Fetch scores for this user
+          const res = await fetch(`/api/items/user/${decoded.userId}`);
+          const data = await res.json();
+          setScores(data.items);
+        } catch (error) {
+          console.error("Error decoding token or fetching scores:", error);
+        }
       }
-    }
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -77,11 +73,16 @@ function CardGridUserScores({
 
       <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
         {scores.map((score, index) => (
-          <div key={score.id} className={index > 0 ? 'mt-6' : ''}>
+          <div key={score._id} className={index > 0 ? 'mt-6' : ''}>
             <ScoreCard
-              imageUrl={score.imageUrl}
-              title={score.title}
-              description={score.description}
+              imageUrl={
+                score.game.toLowerCase() === "fortnite" ? fortnitepic.src :
+                score.game.toLowerCase() === "warzone" ? warzonepic.src :
+                score.game.toLowerCase() === "wordle" ? wordlepic.src :
+                "/default-score.png"
+              }
+              title={score.game}
+              description={`${score.winCount} wins`}
             />
           </div>
         ))}

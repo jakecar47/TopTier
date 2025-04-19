@@ -1,15 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { jwtDecode } from 'jwt-decode';
 import Card from "@/components/Card";
+
+interface JWTPayload {
+  userId: string;
+  username: string;
+  exp: number;
+}
 
 export default function ItemAddForm() {
     
     // dynamically updated/saved form data
     let [formData, setFormData] = useState({
       game: '',
-      userIdentification: '',
+      userIdentification: jwtDecode<JWTPayload>(localStorage.getItem('token')).userId,
       winCount: '',
     });
   
@@ -26,19 +33,29 @@ export default function ItemAddForm() {
   
     // function to execute when submit button is pressed
     const handleSubmit = async (e: React.FormEvent) => {
-      // prevent default browser action
       e.preventDefault();
   
-      // temporary substitute action
-      console.log(`game: ${formData.game}`);
-      console.log(`userIdentification: ${formData.userIdentification}`);
-      console.log(`win count: ${formData.winCount}`);
+      try {
+        const res = await fetch('/api/items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
   
-      // reset form data
-      setFormData({ game: '', userIdentification: '', winCount: '' });
+        const data = await res.json();
+        if (res.ok) {
+          router.push("/auth-view");
+        } else {
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Error submitting signup form:', error);
+        alert('Something went wrong.');
+      }
   
-      // re-route web user
-      router.push('/auth-view');
+      setFormData({ game: '', userIdentification: '', winCount: ''});
     };
   
     return (
