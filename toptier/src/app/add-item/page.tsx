@@ -56,14 +56,6 @@ export default function ItemAddForm() {
                 className="w-full p-4 border border-gray-300 rounded-lg"
               />
               <input
-                name="userIdentification" // Fixed name to match the state key
-                type="text"
-                value={formData.userIdentification}
-                onChange={handleChange} // Fixed
-                placeholder="User Identification"
-                className="w-full p-4 border border-gray-300 rounded-lg"
-              />
-              <input
                 name="winCount" // Fixed name to match the state key
                 type="text"
                 value={formData.winCount}

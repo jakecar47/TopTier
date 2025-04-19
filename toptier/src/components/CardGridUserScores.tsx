@@ -1,12 +1,19 @@
 'use client';
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { ScoreCard } from './ScoreCard';
 import fortnitepic from '@/assets/fortnite.png';
 import warzonepic from '@/assets/warzone.png';
 import wordlepic from '@/assets/wordle.png';
 import Link from 'next/link';
-import { Score } from "@/components/CardGridContentList";
 import { CardGridContentListProps } from "@/components/CardGridContentList";
+import { jwtDecode } from "jwt-decode";
+
+interface JWTPayload {
+  userId: string;
+  username: string;
+  exp: number;
+}
 
 function CardGridUserScores({
   scores = [
@@ -30,19 +37,32 @@ function CardGridUserScores({
     },
   ],
 }: CardGridContentListProps) {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwtDecode<JWTPayload>(token);
+        setUserName(decoded.username);
+      } catch (error) {
+        console.error("Failed to decode JWT:", error);
+      }
+    }
+  }, []);
+
   return (
     <div className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
-
       {/* header section */}
       <div className="flex px-10 space-in-between">
         <header className="max-w-full leading-tight w-[239px]">
           <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
-            James Casey
+            {userName || "Loading..."}
           </h1>
           <p className="mt-2 text-xl text-[#D4AF37]">Your Top Scores!</p>
         </header>
-        <div className="">
-          <Link href="/add-item"className="mr-10">
+        <div>
+          <Link href="/add-item" className="mr-10">
             <button className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
               Add New Score
             </button>

@@ -9,8 +9,8 @@ interface IItem extends Document {
 
 // Item schema to hold data members in an item
 const itemSchema = new Schema<IItem>({
-    userIdentification: { // This will be the user's id
-        type: String,
+    userIdentification: { 
+        type: String, // user's id
     },
     game: {
         type: String,
