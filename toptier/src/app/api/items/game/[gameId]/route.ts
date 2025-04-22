@@ -2,12 +2,8 @@ import connectMongoDB from "../../../../../../config/mongodb";
 import Item from "@/models/itemSchema";
 import { NextResponse } from "next/server";
 
-interface RouteParams {
-  params: { gameId: string };
-}
-
-export async function GET(_: Request, context: Promise<RouteParams>) {
-  const { params } = await context;
+export async function GET(_: Request, contextPromise: Promise<{ params: { gameId: string } }>) {
+  const { params } = await contextPromise;
   const { gameId } = params;
 
   await connectMongoDB();

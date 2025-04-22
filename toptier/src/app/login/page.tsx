@@ -25,24 +25,32 @@ export default function LoginHome() {
 
   // function to execute when submit button is pressed
   const handleSubmit = async (e: React.FormEvent) => {
-    // prevent default browser action
     e.preventDefault();
-
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: formData.username,
-        password: formData.password,
-      }),
-    });
-    const data = await res.json();
-    localStorage.setItem("token", data.token); // or use cookies
-
-
-    // re-route web user
-    router.push('/auth-view');
+  
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+  
+      const data = await res.json();
+  
+      if (!res.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+  
+      localStorage.setItem("token", data.token);
+      router.push('/auth-view');
+    } catch (err: any) {
+      console.error("Login error:", err.message);
+      alert(err.message || "Something went wrong during login.");
+    }
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#0C0F11] text-black">

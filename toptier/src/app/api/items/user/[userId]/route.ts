@@ -6,8 +6,8 @@ interface RouteParams {
   params: { userId: string };
 }
 
-export async function GET(_: Request, { params }: RouteParams) {
-  const { userId } = params;
+export async function GET(_: Request, context: { params: { userId: string } }) {
+  const { userId } = context.params; 
   await connectMongoDB();
 
   const items = await Item.find({ userIdentification: userId });
