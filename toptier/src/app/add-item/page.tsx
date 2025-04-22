@@ -1,40 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { jwtDecode } from 'jwt-decode';
 import Card from "@/components/Card";
-
-interface JWTPayload {
-  userId: string;
-  username: string;
-  exp: number;
-}
 
 export default function ItemAddForm() {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
     game: 'Fortnite',
-    userIdentification: '',
     winCount: '',
   });
-
-  // Set userIdentification after decoding JWT
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decoded = jwtDecode<JWTPayload>(token);
-        setFormData(prev => ({
-          ...prev,
-          userIdentification: decoded.userId,
-        }));
-      } catch (error) {
-        console.error("Failed to decode token:", error);
-      }
-    }
-  }, []);
 
   // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -49,18 +25,25 @@ export default function ItemAddForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You must be logged in to add a score.");
+      return;
+    }
+
     try {
       const res = await fetch('/api/items', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
 
       const data = await res.json();
       if (res.ok) {
-        router.push("/auth-view");
+        router.push("/auth-view"); // Redirect to dashboard or scores view
       } else {
         alert(data.message);
       }
@@ -69,7 +52,7 @@ export default function ItemAddForm() {
       alert('Something went wrong.');
     }
 
-    setFormData({ game: 'Fortnite', userIdentification: '', winCount: '' });
+    setFormData({ game: 'Fortnite', winCount: '' });
   };
 
   return (

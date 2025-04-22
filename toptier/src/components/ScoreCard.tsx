@@ -19,7 +19,8 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
   imageUrl,
   title,
   description,
-  editable
+  editable,
+  game
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [winCount, setWinCount] = useState(title.replace(" wins", ""));
@@ -37,8 +38,9 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           },
-          body: JSON.stringify({ winCount: updatedWinCount }),
+          body: JSON.stringify({game, winCount: updatedWinCount }),
         });
 
         if (!response.ok) {
@@ -60,19 +62,22 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-
+  
       if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Delete error:", errorData.message);
         throw new Error("Failed to delete");
       }
-
+  
       window.location.reload();
     } catch (err) {
       console.error(err);
       alert("Error deleting score.");
     }
-  }
+  };
 
   return (
     <article className="relative flex flex-wrap gap-6 items-start p-6 w-full bg-white rounded-lg border border-solid border-zinc-300 min-w-60 max-md:px-5 max-md:max-w-full">

@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey"; // You should use env vars
+const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey"; 
 
 export async function POST(request: NextRequest) {
   const { username, password } = await request.json();
