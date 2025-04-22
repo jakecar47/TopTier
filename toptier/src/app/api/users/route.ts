@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_key"; // Use env var in prod
+const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey"; // Use env var in prod
 
 export async function GET() {
   await connectMongoDB();
@@ -23,7 +23,6 @@ export async function POST(request: NextRequest) {
 
   const newUser = await User.create({ username, password });
 
-  // 🔐 Create JWT
   const token = jwt.sign(
     { userId: newUser._id, username: newUser.username },
     JWT_SECRET,
