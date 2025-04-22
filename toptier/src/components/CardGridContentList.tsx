@@ -14,6 +14,7 @@ export interface Score {
 
 function CardGridContentList() {
   const [scores, setScores] = useState<Score[]>([]);
+  const [usernames, setUsernames] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
     async function fetchScores() {
@@ -22,6 +23,7 @@ function CardGridContentList() {
         const data = await res.json();
         if (res.ok) {
           setScores(data.items);
+          fetchUsernames(data.items);
         } else {
           console.error("Failed to fetch scores:", data.message);
         }
@@ -30,12 +32,36 @@ function CardGridContentList() {
       }
     }
 
+    async function fetchUsernames(items: Score[]) {
+      const newUsernames: { [key: string]: string } = {};
+
+      await Promise.all(
+        items.map(async (item) => {
+          if (!usernames[item.userIdentification]) {
+            try {
+              const res = await fetch(`/api/users/${item.userIdentification}`);
+              const data = await res.json();
+              if (res.ok && data.user.username) {
+                newUsernames[item.userIdentification] = data.user.username;
+              } else {
+                newUsernames[item.userIdentification] = "Unknown User";
+              }
+            } catch (err) {
+              console.error("Error fetching user:", err);
+              newUsernames[item.userIdentification] = "Unknown User";
+            }
+          }
+        })
+      );
+
+      setUsernames((prev) => ({ ...prev, ...newUsernames }));
+    }
+
     fetchScores();
   }, []);
 
   return (
     <section className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
-      {/* Header section */}
       <div className="flex px-10 space-in-between">
         <header className="max-w-full leading-tight w-[239px]">
           <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
@@ -51,9 +77,13 @@ function CardGridContentList() {
         {scores.map((score, index) => (
           <div key={score._id} className={index > 0 ? "mt-6" : ""}>
             <ScoreCard
+              _id={score._id}
               imageUrl={fortnitepic.src}
               title={`${score.winCount} wins`}
-              description={`User ID: ${score.userIdentification}`}
+              description={usernames[score.userIdentification] || "Loading..."}
+              userIdentification={score.userIdentification}
+              game={score.game}
+              editable={false}
             />
           </div>
         ))}

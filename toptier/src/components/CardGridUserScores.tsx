@@ -75,14 +75,18 @@ function CardGridUserScores() {
         {scores.map((score, index) => (
           <div key={score._id} className={index > 0 ? 'mt-6' : ''}>
             <ScoreCard
+              _id={score._id}
               imageUrl={
                 score.game.toLowerCase() === "fortnite" ? fortnitepic.src :
-                score.game.toLowerCase() === "warzone" ? warzonepic.src :
-                score.game.toLowerCase() === "wordle" ? wordlepic.src :
-                "/default-score.png"
+                  score.game.toLowerCase() === "warzone" ? warzonepic.src :
+                    score.game.toLowerCase() === "wordle" ? wordlepic.src :
+                      "/default-score.png"
               }
               title={score.game}
               description={`${score.winCount} wins`}
+              userIdentification={score.userIdentification}
+              game={score.game}
+              editable={true}
             />
           </div>
         ))}

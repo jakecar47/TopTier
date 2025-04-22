@@ -18,13 +18,20 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 }
 
 // PUT function to update items
-export async function PUT(request: NextRequest, { params }: RouteParams) {
-    const { id } = await params;
-    const { userIdentification: userIdentification, game: game, winCount: winCount } = await request.json();
+export async function PUT(request: NextRequest, context: { params: { id: string } }) {
+    const { id } = await context.params;
+    const { userIdentification, game, winCount } = await request.json();
+  
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json({ message: "Invalid ID format" }, { status: 400 });
+    }
+  
     await connectMongoDB();
     await Item.findByIdAndUpdate(id, { userIdentification, game, winCount });
+  
     return NextResponse.json({ message: "Item updated" }, { status: 200 });
-}
+  }
+  
 
 // DELETE function to delete items
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
