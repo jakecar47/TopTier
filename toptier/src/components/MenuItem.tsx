@@ -7,7 +7,7 @@ interface MenuItemProps {
 
 export function MenuItem({ icon, label }: MenuItemProps) {
   return (
-    <button className="flex overflow-hidden gap-3 items-start px-4 py-3 w-full rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <button onClick={() => console.log(label)} className="flex overflow-hidden gap-3 items-start px-4 py-3 w-full rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
       <img
         src={icon}
         alt=""

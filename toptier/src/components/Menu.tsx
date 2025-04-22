@@ -25,7 +25,7 @@ function Menu({ items }: MenuProps) {
         </div>
       <section className="overflow-hidden w-full text-base leading-snug rounded-lg text-white flex flex-col gap-1">
         {items.map((item) => (
-          <MenuItem key={item.id} icon={item.icon} label={item.label} />
+          <MenuItem key={item.id} icon={item.icon} label={item.label}/>
         ))}
       </section>
     </nav>
