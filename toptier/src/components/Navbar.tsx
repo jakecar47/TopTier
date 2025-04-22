@@ -10,10 +10,7 @@ interface NavbarProps {
 
 function Navbar(props: NavbarProps) {
   
-  const user = "Colson";
-  function retrieveUsername() {
-    
-  }
+  const user = "";
 
   return (
     <nav className="w-full bg-[#0C0F11]">
@@ -22,6 +19,9 @@ function Navbar(props: NavbarProps) {
         <div className="flex-none">
           <Logo />
         </div>
+        <h1 className="flex-none text-4xl md:text-5xl font-bold text-center ml-4">
+          <span className="text-[#D4AF37]">TopTier</span>
+        </h1>
 
         {/* Center: Welcome message */}
         {props.isLoggedIn && (

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ScoreCard } from "./ScoreCard";
+import ScoreCard from "./ScoreCard";
 import fortnitepic from "@/assets/fortnite.png";
 import Card from "@/components/Card";
 
@@ -41,6 +41,8 @@ function CardGridContentList({
     },
   ],
 }: CardGridContentListProps) {
+  const gameName = "Fortnite";
+
   return (
     <Card>
       <section className="p-16 bg-[#0C0F11] max-md:px-5">
@@ -49,10 +51,10 @@ function CardGridContentList({
         <div className="flex px-10 space-in-between"> 
           <header className="max-w-full leading-tight w-[239px]">
             <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
-              Fortnite
+              {gameName}
             </h1>
             <p className="mt-2 text-xl text-[#D4AF37]">
-              All-time Fortnite wins
+              All-time {gameName} wins
             </p>
           </header>
         </div>

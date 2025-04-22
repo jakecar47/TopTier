@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import Content from '../components/Content';
+import Link from "next/link";
 import Logo from "@/components/Logo";
  
 export default async function NotFound() {
@@ -18,7 +17,7 @@ export default async function NotFound() {
       <div className="flex">
         <Link href="/">
           <button 
-            className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
+            className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mt-6">
             Return to Home
           </button>
         </Link>
