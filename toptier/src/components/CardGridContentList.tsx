@@ -3,7 +3,7 @@
 import React from "react";
 import { ScoreCard } from "./ScoreCard";
 import fortnitepic from "@/assets/fortnite.png";
-import Link from "next/link";
+import Card from "@/components/Card";
 
 // a 'score' data type to store data for the highscores
 export interface Score {
@@ -42,32 +42,34 @@ function CardGridContentList({
   ],
 }: CardGridContentListProps) {
   return (
-    <section className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
+    <Card>
+      <section className="p-16 bg-[#0C0F11] max-md:px-5">
 
-      {/* Header section */}
-      <div className="flex px-10 space-in-between"> 
-        <header className="max-w-full leading-tight w-[239px]">
-          <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
-            Fortnite
-          </h1>
-          <p className="mt-2 text-xl text-[#D4AF37]">
-            All-time Fortnite wins
-          </p>
-        </header>
-      </div>
+        {/* Header section */}
+        <div className="flex px-10 space-in-between"> 
+          <header className="max-w-full leading-tight w-[239px]">
+            <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
+              Fortnite
+            </h1>
+            <p className="mt-2 text-xl text-[#D4AF37]">
+              All-time Fortnite wins
+            </p>
+          </header>
+        </div>
 
-      <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
-        {scores.map((score, index) => (
-          <div key={score.id} className={index > 0 ? "mt-6" : ""}>
-            <ScoreCard
-              imageUrl={score.imageUrl}
-              title={score.title}
-              description={score.description}
-            />
-          </div>
-        ))}
-      </div>
-    </section>
+        <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
+          {scores.map((score, index) => (
+            <div key={score.id} className={index > 0 ? "mt-6" : ""}>
+              <ScoreCard
+                imageUrl={score.imageUrl}
+                title={score.title}
+                description={score.description}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    </Card>
   );
 }
 

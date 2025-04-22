@@ -6,13 +6,13 @@ export default function Home() {
     return (
     <div>
         <header>
-          <Card>
-            <Navbar isLoggedIn={true}/>
-          </Card>
+        <Card>
+            <Navbar isLoggedIn={false}/>
+        </Card>
         </header>
         <Card>
             <Content />
         </Card>
       </div>
     );
-} // auth-view Home component
+} // unauth-view Home component

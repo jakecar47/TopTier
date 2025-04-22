@@ -5,6 +5,7 @@ import Welcome from "@/components/Welcome";
 import Content from "@/components/Content";
 import Navbar from "@/components/Navbar";
 import connectMongoDB from "@/../config/mongodb";
+import Card from "@/components/Card";
 
 function Home() {
 
@@ -21,9 +22,19 @@ function Home() {
   return (
     <div>
       <header>
-        <Navbar isLoggedIn={isLoggedIn}/>
+        <Card>
+          <Navbar isLoggedIn={isLoggedIn}/>
+        </Card>
       </header>
-      {isLoggedIn ? <Content /> : <Welcome />}
+      {isLoggedIn ? (
+        <Card>
+          <Content />
+        </Card>
+        ) : (
+        <Card>
+          <Welcome />
+        </Card>
+      )}
     </div>
   );
 }

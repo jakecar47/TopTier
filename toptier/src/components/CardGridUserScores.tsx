@@ -1,11 +1,11 @@
-'use client';
-import * as React from 'react';
-import { ScoreCard } from './ScoreCard';
-import fortnitepic from '@/assets/fortnite.png';
-import warzonepic from '@/assets/warzone.png';
-import wordlepic from '@/assets/wordle.png';
-import Link from 'next/link';
-import { Score } from "@/components/CardGridContentList";
+"use client";
+
+import React from "react";
+import { ScoreCard } from "./ScoreCard";
+import fortnitepic from "@/assets/fortnite.png";
+import warzonepic from "@/assets/warzone.png";
+import wordlepic from "@/assets/wordle.png";
+import Link from "next/link";
 import { CardGridContentListProps } from "@/components/CardGridContentList";
 
 function CardGridUserScores({
@@ -31,7 +31,7 @@ function CardGridUserScores({
   ],
 }: CardGridContentListProps) {
   return (
-    <div className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
+    <div className="p-16 bg-[#0C0F11] max-md:px-5">
 
       {/* header section */}
       <div className="flex px-10 space-in-between">
