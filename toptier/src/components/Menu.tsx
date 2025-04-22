@@ -14,7 +14,7 @@ interface MenuProps {
 
 function Menu({ items, onSelect }: MenuProps) {
   return (
-    <nav className="border-2 border-solid border-[#D4AF37] mx-auto max-w-[320px] w-full px-2 pt-2 pb-[712px] overflow-hidden">
+    <nav className="bg-[#0C0F11] border-2 border-solid border-[#D4AF37] rounded-lg mx-auto max-w-[320px] w-full px-2 pt-2 pb-5 overflow-hidden">
       <header className="overflow-hidden px-4 pt-2 pb-1 w-full text-base font-semibold leading-snug text-white">
         <h2>My Games</h2>
       </header>

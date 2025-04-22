@@ -1,12 +1,13 @@
-import Menu, { MenuItemData } from '@/components/Menu';
+
 import CardGridUserScores from '@/components/CardGridUserScores';
-import wordlepic from '@/assets/wordle.png';
-import fortnitepic from '@/assets/fortnite.png';
-import warzonepic from '@/assets/warzone.png';
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <div>
+      <header>
+        <Navbar isLoggedIn={true} isAccount={true}/>
+      </header>
       <div className="flex">
         <main className="flex-1 p-6">
           <CardGridUserScores />

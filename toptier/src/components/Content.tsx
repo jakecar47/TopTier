@@ -19,10 +19,10 @@ export default function Content() {
   return (
     <div>
       <div className="flex">
-        <aside className="w-[320px] p-6 border-r-2 border-[#D4AF37]">
+        <aside className="w-[320px] p-6 border-r-2 border-[#D4AF37] bg-[#0f0f0f]">
           <Menu items={sampleItems} onSelect={(game) => setSelectedGame(game)} />
         </aside>
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 bg-[#0f0f0f]">
           <CardGridContentList selectedGame={selectedGame} />
         </main>
       </div>

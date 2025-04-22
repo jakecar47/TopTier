@@ -68,17 +68,17 @@ const CardGridContentList: React.FC<CardGridContentListProps> = ({ selectedGame 
   }[selectedGame] || fortnitepic.src;
 
   return (
-    <section className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37]">
-      <div className="flex px-10 space-in-between">
+    <section className="p-16 bg-[#0C0F11] max-md:px-5 border-2 border-[#D4AF37] rounded-lg">
+      <div className="flex items-center justify-center px-10 space-in-between">
         <header className="max-w-full leading-tight w-[239px]">
           <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">{selectedGame}</h1>
           <p className="mt-2 text-xl text-[#D4AF37]">All-time {selectedGame} wins</p>
         </header>
       </div>
 
-      <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-6">
         {scores.map((score, index) => (
-          <div key={score._id} className={index > 0 ? "mt-6" : ""}>
+          <div key={score._id}>
             <ScoreCard
               _id={score._id}
               imageUrl={gameImage}

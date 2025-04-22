@@ -14,9 +14,7 @@ export const ScoreCardContent: React.FC<ScoreCardContentProps> = ({
       <h2 className="text-2xl font-semibold tracking-tight leading-tight text-stone-900 max-md:max-w-full">
         {title}
       </h2>
-      <p className="mt-2 text-base leading-snug text-neutral-500 max-md:max-w-full">
-        {description}
-      </p>
+
     </div>
   );
 };
