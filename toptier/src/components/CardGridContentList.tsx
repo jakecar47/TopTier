@@ -77,9 +77,11 @@ const CardGridContentList: React.FC<CardGridContentListProps> = ({ selectedGame 
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 mt-6">
-        {scores.map((score, index) => (
-          <div key={score._id}>
+        {[...scores]
+          .sort((a, b) => Number(b.winCount) - Number(a.winCount)) // Sort by highest winCount
+          .map((score) => (
             <ScoreCard
+              key={score._id}
               _id={score._id}
               imageUrl={gameImage}
               title={`${score.winCount} wins`}
@@ -88,8 +90,7 @@ const CardGridContentList: React.FC<CardGridContentListProps> = ({ selectedGame 
               game={score.game}
               editable={false}
             />
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );
