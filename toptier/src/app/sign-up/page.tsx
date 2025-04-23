@@ -59,14 +59,12 @@ export default function SignupHome() {
         localStorage.setItem("token", data.token);
         router.push("/auth-view");
       } else {
-        setEmailError("Email address already in use.");
+        setEmailError(data.message);
       }
     } catch (error) {
       console.error('Error submitting signup form:', error);
       alert('Something went wrong.');
     }
-
-    setFormData({ username: '', password: '', email: '' });
   };
 
 
@@ -88,9 +86,7 @@ export default function SignupHome() {
                 placeholder="Enter an email"
                 className="w-full p-4 border border-gray-300 rounded-lg"
               />
-              {emailError && (
-                <p className="text-red-500 text-sm mt-1">{emailError}</p>
-              )}
+              
               <input
                 name="username"
                 type="text"
@@ -107,6 +103,9 @@ export default function SignupHome() {
                 placeholder="Enter a password"
                 className="w-full p-4 border border-gray-300 rounded-lg"
               />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
               <div className="flex justify-end">
                 <button
                   type="submit"
