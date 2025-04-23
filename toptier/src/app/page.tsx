@@ -22,13 +22,7 @@ function Home() {
   return (
     <div>
       <header>
-<<<<<<< HEAD
         <Navbar isLoggedIn={isLoggedIn} isAccount={false}/>
-=======
-        <Card>
-          <Navbar isLoggedIn={isLoggedIn}/>
-        </Card>
->>>>>>> 5e68199e177de97c39755eabe1d01e7fac264e86
       </header>
       {isLoggedIn ? (
         <Card>

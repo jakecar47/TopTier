@@ -16,13 +16,9 @@ export default function Home() {
   return (
     <div>
         <header>
-          <Card>
             <Navbar isLoggedIn={true} isAccount={true}/>
-          </Card>
         </header>
-        <Card>
             <Content />
-        </Card>
       </div>
     );
 } // auth-view Home component
