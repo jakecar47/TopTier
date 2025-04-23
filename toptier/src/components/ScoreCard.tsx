@@ -116,7 +116,7 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="flex justify-center fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white shadow-xl border border-gray-300 rounded-xl">
+        <div className="flex justify-center fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-white shadow-xl border border-gray-300 rounded-xl">
           <div className="bg-white p-6 w-full">
             <h3 className="text-lg font-semibold mb-4 text-black">Edit Wins</h3>
             <input
