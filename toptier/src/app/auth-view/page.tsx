@@ -1,13 +1,23 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Content from "@/components/Content";
 
 export default function Home() {
-    return (
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  return (
     <div>
-        <header>
-          <Navbar isLoggedIn={true}/>
-        </header>
-        <Content />
-      </div>
-    );
-} // auth-view Home component
+      <header>
+        <Navbar isLoggedIn={isLoggedIn} isAccount={false}/>
+      </header>
+      <Content />
+    </div>
+  );
+}

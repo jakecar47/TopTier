@@ -21,7 +21,7 @@ function Home() {
   return (
     <div>
       <header>
-        <Navbar isLoggedIn={isLoggedIn}/>
+        <Navbar isLoggedIn={isLoggedIn} isAccount={false}/>
       </header>
       {isLoggedIn ? <Content /> : <Welcome />}
     </div>
