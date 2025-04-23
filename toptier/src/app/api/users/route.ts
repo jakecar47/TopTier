@@ -21,6 +21,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Username already taken" }, { status: 400 });
   }
 
+  const existingEmail = await User.findOne({ email });
+  if (existingEmail) {
+    return NextResponse.json({ message: "Email already taken" }, { status: 400 });
+  }
+
   const newUser = await User.create({ email, username, password });
 
   const token = jwt.sign(

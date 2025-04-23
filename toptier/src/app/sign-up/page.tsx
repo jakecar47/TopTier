@@ -59,7 +59,7 @@ export default function SignupHome() {
         localStorage.setItem("token", data.token);
         router.push("/auth-view");
       } else {
-        alert(data.message);
+        setEmailError("Email address already in use.");
       }
     } catch (error) {
       console.error('Error submitting signup form:', error);
