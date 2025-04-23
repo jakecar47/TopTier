@@ -81,20 +81,24 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
 
   return (
     <article className="relative hover:scale-105 transition-transform duration-300 ease-in-out flex flex-wrap gap-6 items-start p-6 w-full bg-white rounded-lg border border-solid border-zinc-300 min-w-60 max-md:px-5 max-md:max-w-full">
-      <div>
+      <div className="flex">
         <div>
           <img
             src={imageUrl}
             alt={title}
             className="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40"
           />
-          <div className="mt-2 text-base leading-snug text-black font-bold max-md:max-w-full">
-            Submitted by:
-            <div>{description}</div>
-          </div>
+          {!editable && (
+            <div className="mt-2 text-base leading-snug text-black font-bold max-md:max-w-full">
+              Submitted by:
+              <div>{description}</div>
+            </div>
+          )}
         </div>
-        <div className="flex-1 shrink basis-0 min-w-40 max-md:max-w-full">
-          <ScoreCardContent title={`${winCount}`} description={description} />
+        <div className="flex-1 flex justify-center items-center min-w-40 max-md:max-w-full pl-6">
+          <div className="text-center">
+            <ScoreCardContent title={`${winCount} wins`} description={description} />
+          </div>
         </div>
       </div>
 

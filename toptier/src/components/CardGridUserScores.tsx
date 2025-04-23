@@ -69,28 +69,31 @@ function CardGridUserScores() {
         </div>
       </div>
 
-      
 
-      <div className="mt-12 w-full max-md:mt-10 max-md:max-w-full">
-        {scores.map((score, index) => (
-          <div key={score._id} className={index > 0 ? 'mt-6' : ''}>
-            <ScoreCard
-              _id={score._id}
-              imageUrl={
-                score.game.toLowerCase() === "fortnite" ? fortnitepic.src :
-                  score.game.toLowerCase() === "warzone" ? warzonepic.src :
-                    score.game.toLowerCase() === "wordle" ? wordlepic.src :
-                      "/default-score.png"
-              }
-              title={score.game}
-              description={`${score.winCount} wins`}
-              userIdentification={score.userIdentification}
-              game={score.game}
-              editable={true}
-            />
-          </div>
+
+      <div className="mt-12 w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {scores.map((score) => (
+          <ScoreCard
+            key={score._id}
+            _id={score._id}
+            imageUrl={
+              score.game.toLowerCase() === "fortnite"
+                ? fortnitepic.src
+                : score.game.toLowerCase() === "warzone"
+                  ? warzonepic.src
+                  : score.game.toLowerCase() === "wordle"
+                    ? wordlepic.src
+                    : "/default-score.png"
+            }
+            title={`${score.winCount} wins`}
+            description={score.game}
+            userIdentification={score.userIdentification}
+            game={score.game}
+            editable={true}
+          />
         ))}
       </div>
+
     </div>
   );
 }
