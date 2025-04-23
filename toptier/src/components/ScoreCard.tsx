@@ -40,7 +40,7 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem("token")}`
           },
-          body: JSON.stringify({game, winCount: updatedWinCount }),
+          body: JSON.stringify({ game, winCount: updatedWinCount }),
         });
 
         if (!response.ok) {
@@ -65,13 +65,13 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
         console.error("Delete error:", errorData.message);
         throw new Error("Failed to delete");
       }
-  
+
       window.location.reload();
     } catch (err) {
       console.error(err);
@@ -80,20 +80,22 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
   };
 
   return (
-    <article className="relative flex flex-wrap gap-6 items-start p-6 w-full bg-white rounded-lg border border-solid border-zinc-300 min-w-60 max-md:px-5 max-md:max-w-full">
+    <article className="relative hover:scale-105 transition-transform duration-300 ease-in-out flex flex-wrap gap-6 items-start p-6 w-full bg-white rounded-lg border border-solid border-zinc-300 min-w-60 max-md:px-5 max-md:max-w-full">
       <div>
-      <img
-        src={imageUrl}
-        alt={title}
-        className="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40"
-      />
-      <div className="mt-2 text-base leading-snug text-black font-bold max-md:max-w-full">
-          Submitted by: 
-          <div>{description}</div>
-      </div>
-      </div>
-      <div className="flex-1 shrink basis-0 min-w-40 max-md:max-w-full">
-        <ScoreCardContent title={`${winCount}`} description={description} />
+        <div>
+          <img
+            src={imageUrl}
+            alt={title}
+            className="object-contain shrink-0 w-40 aspect-square min-h-40 min-w-40"
+          />
+          <div className="mt-2 text-base leading-snug text-black font-bold max-md:max-w-full">
+            Submitted by:
+            <div>{description}</div>
+          </div>
+        </div>
+        <div className="flex-1 shrink basis-0 min-w-40 max-md:max-w-full">
+          <ScoreCardContent title={`${winCount}`} description={description} />
+        </div>
       </div>
 
       {editable && (
@@ -103,7 +105,7 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
           </div>
 
           <div>
-            <img src={deleteImg.src} alt="Delete" onClick={handleDelete}/>
+            <img src={deleteImg.src} alt="Delete" onClick={handleDelete} />
           </div>
         </div>
       )}
@@ -112,14 +114,14 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
       {isModalOpen && (
         <div className="flex justify-center fixed top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/3 bg-white shadow-xl border border-gray-300 rounded-xl">
           <div className="bg-white p-6 w-full">
-            <h3 className="text-lg font-semibold mb-4">Edit Wins</h3>
+            <h3 className="text-lg font-semibold mb-4 text-black">Edit Wins</h3>
             <input
               type="number"
-              className="w-full p-2 border border-gray-300 rounded mb-4"
+              className="w-full p-2 border border-gray-300 rounded mb-4 text-black"
               value={updatedWinCount}
               onChange={(e) => setUpdatedWinCount(e.target.value)}
             />
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-end gap-2 text-black">
               <button
                 className="px-4 py-2 bg-gray-200 rounded"
                 onClick={() => setIsModalOpen(false)}

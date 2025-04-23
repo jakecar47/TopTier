@@ -61,7 +61,7 @@ function CardGridUserScores() {
         <div>
           <button
             onClick={() => setShowAddModal(true)}
-            className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300"
+            className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 cursor-pointer"
           >
             Add New Score
           </button>

@@ -14,7 +14,7 @@ export function MenuItem({ icon, label, onClick }: MenuItemProps) {
     >
       <img src={icon} alt="" className="object-contain shrink-0 w-5 aspect-square bg-white" />
       <div className="flex-1 shrink basis-0">
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-between items-center w-full cursor-pointer">
           <span className="flex-1 shrink self-stretch my-auto basis-0 text-left">
             {label}
           </span>
