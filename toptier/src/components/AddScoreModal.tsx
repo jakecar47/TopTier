@@ -1,27 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
 import Card from "@/components/Card";
 
-export default function ItemAddForm() {
-  const router = useRouter();
-
+export default function AddScoreModal({ onClose }: { onClose: () => void }) {
   const [formData, setFormData] = useState({
     game: 'Fortnite',
     winCount: '',
   });
 
-  // Handle form input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Submit form data
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -43,7 +35,8 @@ export default function ItemAddForm() {
 
       const data = await res.json();
       if (res.ok) {
-        router.push("/auth-view"); // Redirect to dashboard or scores view
+        onClose();
+        window.location.reload(); // or router.push("/auth-view");
       } else {
         alert(data.message);
       }
@@ -56,8 +49,9 @@ export default function ItemAddForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#0C0F11] text-black">
-      <div className="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg">
+    <div className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="bg-white text-black w-full max-w-2xl p-8 rounded-lg shadow-lg relative">
+        <button onClick={onClose} className="absolute top-2 right-4 text-xl font-bold">×</button>
         <h2 className="text-2xl font-bold text-center mb-6">Add a New Highscore</h2>
         <Card>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -80,6 +74,7 @@ export default function ItemAddForm() {
               placeholder="Win Count"
               className="w-full p-4 border border-gray-300 rounded-lg"
             />
+
             <div className="flex justify-end">
               <button
                 type="submit"
