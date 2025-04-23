@@ -2,10 +2,10 @@
 
 import React from "react";
 import Logo from "./Logo";
-import SearchField from "./SearchField";
 import NavButtons from "./NavButtons";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import SearchField from "@/components/SearchField";
 
 interface NavbarProps {
   isLoggedIn: boolean;
@@ -47,6 +47,7 @@ function Navbar(props: NavbarProps) {
           </div>
         )}
 
+        {/* Right: NavButtons */}
         <div className="flex-none">
           <NavButtons isLoggedIn={props.isLoggedIn} />
         </div>

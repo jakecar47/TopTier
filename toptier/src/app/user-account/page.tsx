@@ -1,5 +1,5 @@
-
-import CardGridUserScores from '@/components/CardGridUserScores';
+import CardGridUserScores from "@/components/CardGridUserScores";
+import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
@@ -10,7 +10,9 @@ export default function Home() {
       </header>
       <div className="flex">
         <main className="flex-1 p-6">
-          <CardGridUserScores />
+          <Card>
+            <CardGridUserScores />
+          </Card> 
         </main>
       </div>
     </div>

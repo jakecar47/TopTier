@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 import { ScoreCardContent } from "./ScoreCardContent";
 import edit from "@/assets/edit.png";
@@ -145,3 +145,5 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
     </article>
   );
 };
+
+export default ScoreCard;

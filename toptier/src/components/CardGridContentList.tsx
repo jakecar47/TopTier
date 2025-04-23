@@ -1,7 +1,8 @@
 "use client";
 
+import ScoreCard from "./ScoreCard";
+import Card from "@/components/Card";
 import React, { useEffect, useState } from "react";
-import { ScoreCard } from "./ScoreCard";
 import fortnitepic from "@/assets/fortnite.png";
 import warzonepic from "@/assets/warzone.png";
 import wordlepic from "@/assets/wordle.png";

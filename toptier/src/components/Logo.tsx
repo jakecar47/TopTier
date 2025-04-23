@@ -1,7 +1,6 @@
 import React from "react";
-import ttlogo from "@/assets/ttlogo.png";
 
-// website logo
+// website logo in svg format
 function Logo() {
   return (
     <div className="flex items-center">

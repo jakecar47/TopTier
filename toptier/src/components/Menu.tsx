@@ -1,5 +1,8 @@
-import * as React from "react";
+"use client";
+
+import React from "react";
 import { MenuItem } from "./MenuItem";
+import Card from "@/components/Card";
 
 export interface MenuItemData {
   id: string;

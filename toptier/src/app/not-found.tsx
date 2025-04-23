@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Link from 'next/link';
 import Content from '../components/Content';
 =======
 import Link from "next/link";
 >>>>>>> noah
+=======
+import Link from "next/link";
+>>>>>>> 5e68199e177de97c39755eabe1d01e7fac264e86
 import Logo from "@/components/Logo";
  
 export default async function NotFound() {

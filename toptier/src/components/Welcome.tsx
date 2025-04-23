@@ -1,11 +1,12 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import wordlepic from "@/assets/wordle.png";
 import fortnitepic from "@/assets/fortnite.png";
 import warzonepic from "@/assets/warzone.png";
+import Card from "@/components/Card";
 
 // welcome 'splash' page for the website
 export default function Welcome() {
@@ -30,10 +31,10 @@ export default function Welcome() {
 
       {/* Get Started */}
       <div className="flex">
-        <Link href="/auth-view">
+        <Link href="/unauth-view">
           <button 
             className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 mb-8">
-            Get Started
+            Get Started as Guest
           </button>
         </Link>
       </div> 
@@ -47,7 +48,7 @@ export default function Welcome() {
       </p>
 
       {/* Secondary Image/Illustration */}
-      <div className="mt-12">
+      <Card>
         <div className="flex gap-5 justify-center">
           <Image
             src={wordlepic} // Placeholder path
@@ -71,7 +72,7 @@ export default function Welcome() {
             className="rounded-md shadow-md"
           />
         </div>
-      </div>
+      </Card>
     </main>
   )
 }
