@@ -54,7 +54,7 @@ function CardGridUserScores() {
       <div className="flex space-in-between justify-between">
         <header className="max-w-full leading-tight w-[239px]">
           <h1 className="text-5xl font-bold tracking-tight text-[#D4AF37]">
-            {userName || "Loading..."}
+            Welcome, {userName || "Loading..."}
           </h1>
           <p className="mt-2 text-xl text-[#D4AF37]">Your Top Scores!</p>
         </header>

@@ -46,7 +46,7 @@ export default function LoginHome() {
       }
 
       localStorage.setItem("token", data.token);
-      router.push('/auth-view');
+      router.push('/user-account');
     } catch (err: any) {
       console.error("Login error:", err.message);
       setError(err.message);
