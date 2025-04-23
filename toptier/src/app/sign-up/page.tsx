@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
 
@@ -31,7 +31,8 @@ export default function SignupHome() {
     const res = await fetch(`https://apilayer.net/api/check?access_key=d73ae490bca98b8609bce66c12a9eae3&email=${formData.email}`);
     const data = await res.json();
 
-    if (!data.smtp_check || !data.format_valid) {
+
+    if (!data.format_valid) {
       setEmailError("Invalid or unreachable email address.");
       return false;
     }
