@@ -9,9 +9,12 @@ export default function SignupHome() {
 
   // dynamically updated/saved form data
   let [formData, setFormData] = useState({
+    email: '',
     username: '',
     password: '',
   });
+
+  const [emailError, setEmailError] = useState<string>('');
 
   const router = useRouter();
 
@@ -24,9 +27,23 @@ export default function SignupHome() {
     }));
   };
 
+  const emailCheck = async () => {
+    const res = await fetch(`https://apilayer.net/api/check?access_key=d73ae490bca98b8609bce66c12a9eae3&email=${formData.email}`);
+    const data = await res.json();
+
+    if (!data.smtp_check || !data.format_valid) {
+      setEmailError("Invalid or unreachable email address.");
+      return false;
+    }
+
+    setEmailError('');
+    return true;
+  };
   // function to execute when submit button is pressed
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const isEmailValid = await emailCheck();
+    if (!isEmailValid) return;
 
     try {
       const res = await fetch('/api/users', {
@@ -49,7 +66,7 @@ export default function SignupHome() {
       alert('Something went wrong.');
     }
 
-    setFormData({ username: '', password: '' });
+    setFormData({ username: '', password: '', email: '' });
   };
 
 
@@ -63,6 +80,17 @@ export default function SignupHome() {
           <h2 className="text-2xl font-bold text-center mb-6">Register an Account with TopTier</h2>
           <Card>
             <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange} // Fixed
+                placeholder="Enter an email"
+                className="w-full p-4 border border-gray-300 rounded-lg"
+              />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
               <input
                 name="username"
                 type="text"

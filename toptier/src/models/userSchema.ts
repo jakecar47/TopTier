@@ -3,12 +3,18 @@ import bcrypt from "bcrypt";
 
 // Create the interface for user
 interface IUser extends Document {
+    email: string;
     username: string;
     password: string;
 }
 
 // User schema to hold data members in a user
 const userSchema = new Schema<IUser>({
+    email: {
+        type: String,
+        required: true,
+        unique:true,
+    },
     username: {
         type: String,
         required: true,

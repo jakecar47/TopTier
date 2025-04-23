@@ -13,7 +13,7 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const { username, password } = await request.json();
+  const { username, password, email } = await request.json();
   await connectMongoDB();
 
   const existingUser = await User.findOne({ username });
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: "Username already taken" }, { status: 400 });
   }
 
-  const newUser = await User.create({ username, password });
+  const newUser = await User.create({ email, username, password });
 
   const token = jwt.sign(
     { userId: newUser._id, username: newUser.username },
