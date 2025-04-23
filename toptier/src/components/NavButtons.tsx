@@ -18,13 +18,13 @@ function NavButtons(props: NavButtonsProps) {
         <div className="flex gap-3 items-center max-md:gap-2 max-sm:ml-auto">
           <Link href="/login">
             <button 
-              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 cursor-pointer">
               Login
             </button>
           </Link>
           <Link href="/sign-up">
             <button 
-              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 cursor-pointer">
               Sign Up
             </button>
           </Link>
@@ -33,15 +33,15 @@ function NavButtons(props: NavButtonsProps) {
       {/* if user IS logged in */}
       {props.isLoggedIn && (
         <div className="flex gap-3 items-center max-md:gap-2 max-sm:ml-auto">
-          <Link href="/welcome">
+          <Link href="/">
             <button onClick={handleClick}
-              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 cursor-pointer">
               Logout
             </button>
           </Link>
           <Link href="/user-account">
             <button 
-              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300">
+              className="bg-yellow-400 text-black font-semibold py-3 px-6 rounded-full shadow hover:bg-yellow-300 transition duration-300 cursor-pointer">
               Account
             </button>
           </Link>

@@ -4,15 +4,11 @@ import Card from "@/components/Card";
 
 export default function Home() {
     return (
-    <div>
-        <header>
-        <Card>
-            <Navbar isLoggedIn={false}/>
-        </Card>
-        </header>
-        <Card>
+        <div>
+            <header>
+                <Navbar isLoggedIn={false} />
+            </header>
             <Content />
-        </Card>
-      </div>
+        </div>
     );
 } // unauth-view Home component
