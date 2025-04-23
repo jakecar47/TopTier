@@ -51,7 +51,7 @@ export default function AddScoreModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center">
       <div className="bg-white text-black w-full max-w-2xl p-8 rounded-lg shadow-lg relative">
-        <button onClick={onClose} className="absolute top-2 right-4 text-xl font-bold">×</button>
+        <button onClick={onClose} className="absolute top-2 right-4 text-xl font-bold cursor-pointer">×</button>
         <h2 className="text-2xl font-bold text-center mb-6">Add a New Highscore</h2>
         <Card>
           <form onSubmit={handleSubmit} className="space-y-6">
