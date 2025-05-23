@@ -5,8 +5,10 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
+// Import environment variables
 const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey"; 
 
+// POST function to handle user login
 export async function POST(request: NextRequest) {
   const { username, password } = await request.json();
   await connectMongoDB();

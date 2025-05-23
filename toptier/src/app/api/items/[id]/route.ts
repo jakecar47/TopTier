@@ -104,4 +104,4 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
       console.error("DELETE error:", error.message);
       return NextResponse.json({ message: "Internal Server Error", error: error.message }, { status: 500 });
     }
-  }
+  } 

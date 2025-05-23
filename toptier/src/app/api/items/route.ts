@@ -3,12 +3,14 @@ import Item from "@/models/itemSchema";
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/verifyToken";
 
+// GET function to return all items from the database
 export async function GET() {
   await connectMongoDB();
   const items = await Item.find();
   return NextResponse.json({ items });
 }
 
+// POST function to add a new item to the database
 export async function POST(request: NextRequest) {
   try {
     const authHeader = request.headers.get("Authorization");

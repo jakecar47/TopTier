@@ -21,16 +21,18 @@ export default function ItemAddForm() {
     }));
   };
 
-  // Submit form data
+  // Function to submit form data
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Ensure user is logged in
     const token = localStorage.getItem("token");
     if (!token) {
       alert("You must be logged in to add a score.");
       return;
     }
 
+    // Attempt to submit the form data and reset the form
     try {
       const res = await fetch('/api/items', {
         method: 'POST',
@@ -52,9 +54,11 @@ export default function ItemAddForm() {
       alert('Something went wrong.');
     }
 
+    // Reset form data
     setFormData({ game: 'Fortnite', winCount: '' });
   };
 
+  // Render the form with a select dropdown for game and input for win count
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#0C0F11] text-black">
       <div className="w-full max-w-2xl p-8 bg-white rounded-lg shadow-lg">

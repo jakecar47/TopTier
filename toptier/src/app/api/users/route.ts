@@ -4,14 +4,17 @@ import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey"; // Use env var in prod
+// Use environment variables for sensitive data
+const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
 
+// Get function to fetch all users
 export async function GET() {
   await connectMongoDB();
   const users = await User.find();
   return NextResponse.json({ users });
 }
 
+// POST function to handle user registration
 export async function POST(request: NextRequest) {
   const { username, password, email } = await request.json();
   await connectMongoDB();

@@ -2,6 +2,7 @@ import connectMongoDB from "../../../../../../config/mongodb";
 import Item from "@/models/itemSchema";
 import { NextResponse } from "next/server";
 
+// Get function to fetch gameID items
 export async function GET(_: Request, contextPromise: Promise<{ params: { gameId: string } }>) {
   const { params } = await contextPromise;
   const { gameId } = params;
